@@ -2,7 +2,7 @@ services:
   backend:  
     build: .
     image: chatting_web:latest
-    command: sh -c "python manage.py migrate && daphne vacation.asgi:application --port 8000 --bind 0.0.0.0 -v2 && python -c "from chatbot.graph_chatbot import initialize_graph; initialize_graph()""
+    command: sh -c "python -c 'from chatbot.graph_chatbot import initialize_graph; initialize_graph()' && python manage.py migrate && daphne vacation.asgi:application --port 8000 --bind 0.0.0.0 -v2"
     volumes:
       - .:/app
       - static_volume:/app/static
