@@ -53,7 +53,7 @@ INSTALLED_APPS = [
     "corsheaders",
     # local apps
     "account",
-    "chatbot",
+    "chatbot.apps.ChatbotConfig",
     "calendar_app",
 ]
 
