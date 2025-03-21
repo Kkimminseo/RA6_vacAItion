@@ -10,11 +10,12 @@ ENV DJANGO_SETTINGS_MODULE vacation.settings
 WORKDIR /app
 
 # Install system dependencies
-RUN apt-get update \
+RUN apt-get update --fix-missing \
     && apt-get install -y --no-install-recommends \
         postgresql-client \
         build-essential \
         python3-dev \
+    && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
 # Install Python dependencies
