@@ -26,8 +26,5 @@ RUN pip install --upgrade pip \
 # Copy project
 COPY . /app/
 
-# 스크립트에 실행 권한 부여
-RUN chmod +x /app/start.sh
-
-# 실행 스크립트 실행
-CMD ["/app/start.sh"] 
+# Daphne 실행
+CMD ["daphne", "vacation.asgi:application", "--port", "8000", "--bind", "0.0.0.0", "-v2"] 
