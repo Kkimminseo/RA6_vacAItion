@@ -1,7 +1,12 @@
 from django.apps import AppConfig
 import threading
 import os
+import logging
 from .graph_chatbot import initialize_graph
+
+# 로깅 설정
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.INFO)
 
 
 class ChatbotConfig(AppConfig):
@@ -12,26 +17,23 @@ class ChatbotConfig(AppConfig):
         """서버 시작 시 LangGraph 초기화"""
         # 자동 리로드 시 중복 초기화 방지
         if os.environ.get("RUN_MAIN") != "true":
+            logger.info("RUN_MAIN이 true가 아니므로 초기화 건너뜀")
             return
 
         # 이미 초기화된 경우 중복 초기화 방지
         from .graph_chatbot import _graph_instance, _initialization_in_progress
 
         if _graph_instance is not None:
-            print("=== LangGraph가 이미 초기화되어 있습니다 ===")
+            logger.info("LangGraph 인스턴스가 이미 존재하므로 초기화 건너뜀")
             return
 
         if _initialization_in_progress:
-            print("=== LangGraph 초기화가 이미 진행 중입니다 ===")
+            logger.info("LangGraph 초기화가 이미 진행 중이므로 건너뜀")
             return
 
-        def initialize_in_background():
-            try:
-                print("\n=== 서버 시작: LangGraph 초기화 시작 ===")
-                initialize_graph()
-                print("=== LangGraph 초기화 완료 ===\n")
-            except Exception as e:
-                print(f"=== LangGraph 초기화 실패: {e} ===\n")
+        # 백그라운드에서 초기화 시작
+        logger.info("LangGraph 초기화 시작 (apps.py)")
+        from .graph_chatbot import initialize_graph_in_background
 
-        # 백그라운드 스레드에서 초기화 실행
-        threading.Thread(target=initialize_in_background, daemon=True).start()
+        threading.Thread(target=initialize_graph_in_background, daemon=True).start()
+        logger.info("LangGraph 초기화 태스크 시작됨")
