@@ -33,7 +33,7 @@ function checkLoginStatus() {
     if (!accessToken) {
         // 비로그인 상태면 로그인 페이지로 리다이렉트
         alert('로그인이 필요한 페이지입니다.');
-        window.location.href = 'login.html';
+        window.location.href = '../pages/login.html';
         return;
     }
     
@@ -160,7 +160,7 @@ async function saveProfileData(event) {
         if (response.ok) {
             showStatusMessage('회원 정보가 성공적으로 수정되었습니다.', true);
             setTimeout(() => {
-                window.location.href = 'profile.html';
+                window.location.href = '../pages/profile.html';
             }, 1500);
         } else {
             showStatusMessage(data.message || data.error || '회원 정보 수정에 실패했습니다.', false);
@@ -193,7 +193,7 @@ async function logout() {
         
         if (!refreshToken) {
             alert('이미 로그아웃 되었습니다.');
-            window.location.href = 'login.html';
+            window.location.href = '../pages/login.html';
             return;
         }
         
@@ -214,7 +214,7 @@ async function logout() {
         localStorage.removeItem('username');
         
         alert('로그아웃 되었습니다.');
-        window.location.href = 'login.html';
+        window.location.href = '../pages/login.html';
     } catch (error) {
         console.error('로그아웃 에러:', error);
         // 에러가 발생해도 로컬 스토리지는 비우기
@@ -222,6 +222,6 @@ async function logout() {
         localStorage.removeItem('refresh_token');
         localStorage.removeItem('username');
         alert('로그아웃 처리 중 오류가 발생했습니다.');
-        window.location.href = 'login.html';
+        window.location.href = '../pages/login.html';
     }
 } 

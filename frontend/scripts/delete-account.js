@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (returnToHomeBtn) {
         returnToHomeBtn.addEventListener('click', (e) => {
             e.preventDefault();
-            window.location.href = 'calendar.html';
+            window.location.href = '../index.html';
         });
     }
 });
@@ -33,7 +33,7 @@ function checkLoginStatus() {
     if (!accessToken) {
         // 비로그인 상태면 로그인 페이지로 리다이렉트
         // alert('로그인이 필요한 페이지입니다.');
-        window.location.href = 'login.html';
+        window.location.href = '../pages/login.html';
     }
 }
 
@@ -111,7 +111,7 @@ async function deleteAccount() {
                 
                 alert('회원 탈퇴가 완료되었습니다.');
                 // 로그인 페이지로 이동 시 특별한 파라미터 추가
-                window.location.href = 'login.html?fromDeleteAccount=true';
+                window.location.href = '../pages/login.html?fromDeleteAccount=true';
                 return;
             }
             
@@ -136,7 +136,7 @@ async function deleteAccount() {
             
             alert('회원 탈퇴가 완료되었습니다.');
             // 로그인 페이지로 이동 시 특별한 파라미터 추가
-            window.location.href = 'login.html?fromDeleteAccount=true';
+            window.location.href = '../pages/login.html?fromDeleteAccount=true';
         }
     } catch (error) {
         console.error('회원 탈퇴 에러:', error);

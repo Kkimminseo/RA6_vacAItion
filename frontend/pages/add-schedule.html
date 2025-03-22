@@ -16,8 +16,8 @@
             </div>
             <nav class="main-nav">
                 <ul>
-                    <li><a href="calendar.html">Home</a></li>
-                    <li><a href="profile.html" id="profileNavLink">Profile</a></li>
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="./profile.html" id="profileNavLink">Profile</a></li>
                     <li><a href="#" id="logoutButton">Logout</a></li>
                 </ul>
             </nav>
@@ -32,7 +32,7 @@
                     </div>
                     <!-- 미니 달력 아래에 캘린더로 돌아가기 버튼 추가 -->
                     <div class="calendar-link-container">
-                        <button class="calendar-btn" onclick="window.location.href='calendar.html'">캘린더로 돌아가기</button>
+                        <button class="calendar-btn" onclick="window.location.href='../index.html'">캘린더로 돌아가기</button>
                     </div>
                 </div>
 
@@ -67,7 +67,7 @@
                         </div>
                         
                         <!-- 숨겨진 캘린더 링크 추가 -->
-                        <a href="calendar.html" id="hiddenCalendarLink" style="display: none;">캘린더로 이동</a>
+                        <a href="../index.html" id="hiddenCalendarLink" style="display: none;">캘린더로 이동</a>
                     </div>
                 </div>
             </div>
@@ -164,11 +164,11 @@
             
             try {
                 console.log('[디버그-HTML] 캘린더 페이지로 이동');
-                window.location.href = 'calendar.html';
+                window.location.href = '../index.html';
             } catch (e) {
                 console.error('[디버그-HTML] 이동 오류:', e);
                 // 오류 발생 시 무조건 이동
-                window.location.href = 'calendar.html';
+                window.location.href = '../index.html';
             }
         }
         

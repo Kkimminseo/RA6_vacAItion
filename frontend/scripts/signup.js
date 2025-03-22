@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     window.location.href = loginLink.getAttribute('href');
                 } else {
                     // 링크를 찾지 못한 경우 기본 경로 사용
-                    window.location.href = 'login.html';
+                    window.location.href = '../pages/login.html';
                 }
             } else {
                 // 서버에서 반환된 에러 메시지 처리

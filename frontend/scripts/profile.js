@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (deleteAccountLink) {
         deleteAccountLink.addEventListener('click', (e) => {
             e.preventDefault();
-            window.location.href = 'delete-account.html';
+            window.location.href = '../pages/delete-account.html';
         });
     }
 });
@@ -56,7 +56,7 @@ function checkLoginStatus() {
     } else {
         // 비로그인 상태면 로그인 페이지로 리다이렉트
         alert('로그인이 필요한 페이지입니다.');
-        window.location.href = 'login.html';
+        window.location.href = '../pages/login.html';
     }
 }
 
@@ -113,7 +113,7 @@ async function loadProfileData() {
 // 회원정보 수정 페이지로 이동하는 함수
 function redirectToEditProfile() {
     // 회원정보 수정 페이지로 이동
-    window.location.href = 'edit-profile.html';
+    window.location.href = '../pages/edit-profile.html';
 }
 
 // 로그아웃 함수
@@ -123,7 +123,7 @@ async function logout() {
         
         if (!refreshToken) {
             alert('이미 로그아웃 되었습니다.');
-            window.location.href = 'login.html';
+            window.location.href = '../pages/login.html';
             return;
         }
         
@@ -144,7 +144,7 @@ async function logout() {
         localStorage.removeItem('username');
         
         alert('로그아웃 되었습니다.');
-        window.location.href = 'login.html';
+        window.location.href = '../pages/login.html';
     } catch (error) {
         console.error('로그아웃 에러:', error);
         // 에러가 발생해도 로컬 스토리지는 비우기
@@ -152,6 +152,6 @@ async function logout() {
         localStorage.removeItem('refresh_token');
         localStorage.removeItem('username');
         alert('로그아웃 처리 중 오류가 발생했습니다.');
-        window.location.href = 'login.html';
+        window.location.href = '../pages/login.html';
     }
 } 
