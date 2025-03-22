@@ -44,9 +44,7 @@ def load_data(query_type: str) -> Tuple[List[Document], Any]:
     from chatbot.models import Event, NaverBlog, NaverBlogFaiss
 
     # 현재 프로젝트 디렉토리 경로 얻기
-    current_dir = (
-        Path(__file__).resolve().parent.parent.parent.parent
-    )  # RA6_vacAItion 디렉토리까지
+    current_dir = Path(__file__).resolve().parent.parent.parent  # Backend 디렉토리까지
 
     embeddings = OpenAIEmbeddings(model="text-embedding-ada-002")
 
@@ -94,11 +92,7 @@ def load_data(query_type: str) -> Tuple[List[Document], Any]:
                 allow_dangerous_deserialization=True,
             )
         except Exception:
-            if event_docs:
-                event_vectorstore = FAISS.from_documents(event_docs, embeddings)
-                event_vectorstore.save_local(str(event_vectorstore_path))
-            else:
-                raise ValueError("이벤트 문서가 없어 벡터스토어를 생성할 수 없습니다.")
+            ValueError("이벤트 문서가 없어 벡터스토어를 생성할 수 없습니다.")
 
         return event_docs, event_vectorstore
 
@@ -136,10 +130,6 @@ def load_data(query_type: str) -> Tuple[List[Document], Any]:
                 str(vectorstore_path), embeddings, allow_dangerous_deserialization=True
             )
         except Exception:
-            if docs:
-                vectorstore = FAISS.from_documents(docs, embeddings)
-                vectorstore.save_local(str(vectorstore_path))
-            else:
-                raise ValueError("일반 문서가 없어 벡터스토어를 생성할 수 없습니다.")
+            raise ValueError("일반 문서가 없어 벡터스토어를 생성할 수 없습니다.")
 
         return docs, vectorstore

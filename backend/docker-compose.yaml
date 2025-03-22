@@ -9,6 +9,8 @@ services:
       - media_volume:/app/media
     expose:
       - 8000
+    ports:
+      - "8000:8000"
     env_file:
       - .env
     depends_on:
@@ -17,15 +19,19 @@ services:
       - DB_HOST=db
       - DB_PORT=5432
       - DJANGO_SETTINGS_MODULE=vacation.settings
+      - TZ=Asia/Seoul
 
   db:
     image: postgres:15
     volumes:
       - postgres_data:/var/lib/postgresql/data/
+    env_file:
+      - .env
     environment:
-      - POSTGRES_DB=${DB_NAME}
-      - POSTGRES_USER=${DB_USER}
-      - POSTGRES_PASSWORD=${DB_PASSWORD}
+      - POSTGRES_DB=${POSTGRES_DB}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - TZ=Asia/Seoul
     ports:
       - "5432:5432"
 
