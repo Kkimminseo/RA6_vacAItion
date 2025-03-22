@@ -1,4 +1,4 @@
-const BACKEND_BASE_URL = 'http://localhost:8000';
+const BACKEND_BASE_URL = 'http://43.200.96.32:8000';
 
 document.addEventListener('DOMContentLoaded', () => {
     // 이미 로그인된 상태인지 확인

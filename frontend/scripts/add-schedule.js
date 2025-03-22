@@ -1,5 +1,5 @@
 // 상수 정의
-const BACKEND_BASE_URL = 'http://localhost:8000'; // 백엔드 기본 URL
+const BACKEND_BASE_URL = 'http://43.200.96.32:8000'; // 백엔드 기본 URL
 const ACCESS_TOKEN_KEY = 'access_token'; // 로컬 스토리지에 저장된 토큰 키 이름
 const USERNAME_KEY = 'username';
 

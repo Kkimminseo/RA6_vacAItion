@@ -1,4 +1,4 @@
-const BACKEND_BASE_URL = 'http://localhost:8000';
+const BACKEND_BASE_URL = 'http://43.200.96.32:8000';
 // 디버깅을 위한 로그 활성화
 const DEBUG = true;
 
@@ -251,7 +251,7 @@ class ChatWebSocket {
             this.connectionStatus = 'connecting';
             console.log('WebSocket 연결 시도 중...');
             
-            const wsUrl = `ws://localhost:8000/ws/chat/${this.sessionId}/?token=${accessToken}`;
+            const wsUrl = `ws://43.200.96.32:8000/ws/chat/${this.sessionId}/?token=${accessToken}`;
             console.log('연결 URL:', wsUrl);
             
             this.ws = new WebSocket(wsUrl);

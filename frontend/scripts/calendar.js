@@ -1,4 +1,4 @@
-const BACKEND_BASE_URL = 'http://localhost:8000';
+const BACKEND_BASE_URL = 'http://43.200.96.32:8000';
 
 // 디버깅용 로그
 console.log('캘린더 페이지 로드됨');
@@ -61,7 +61,7 @@ async function logout() {
         localStorage.removeItem('username');
         
         alert('로그아웃 되었습니다.');
-        window.location.replace('pages/login.html');
+        window.location.replace('./pages/login.html');
     }
 }
 
@@ -87,7 +87,7 @@ function setupEventListeners() {
         // 프로필 링크
         navLinks[1].addEventListener('click', function(e) {
             e.preventDefault();
-            window.location.href = 'pages/profile.html';
+            window.location.href = './pages/profile.html';
         });
         
         // 로그아웃 링크
@@ -105,7 +105,7 @@ function setupEventListeners() {
 function checkLoginStatus() {
     const accessToken = localStorage.getItem('access_token');
     if (!accessToken) {
-        window.location.replace('pages/login.html');
+        window.location.replace('./pages/login.html');
         return false;
     }
     return true;
@@ -173,7 +173,7 @@ class Calendar {
                 localStorage.removeItem('access_token');
                 localStorage.removeItem('refresh_token');
                 localStorage.removeItem('username');
-                window.location.replace('pages/login.html');
+                window.location.replace('./pages/login.html');
                 return;
             }
             
@@ -396,7 +396,7 @@ class Calendar {
                 const dayVal = this.selectedDate.getDate().toString().padStart(2, '0');
                 const dateStr = `${year}-${month}-${dayVal}`;
                 console.log(`선택한 날짜: ${year}년 ${month}월 ${dayVal}일, URL 파라미터: ${dateStr}`);
-                window.location.href = `pages/add-schedule.html?date=${dateStr}`;
+                window.location.href = `./pages/add-schedule.html?date=${dateStr}`;
             });
 
             this.daysContainer.appendChild(dayElement);
