@@ -185,6 +185,7 @@ WEBSOCKET_READ_TIMEOUT = 60  # 초 단위
 
 # CORS 설정 (바닐라 JS 환경)
 CORS_ALLOWED_ORIGINS = [
+    "https://ra6vacaition.vercel.app",
     "http://127.0.0.1:5500",
     "http://localhost:5500",
     "http://127.0.0.1:5501",
